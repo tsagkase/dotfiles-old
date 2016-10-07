@@ -133,3 +133,9 @@ export NVM_DIR="/home/vaggelis/.nvm"
 if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
+#
+# set VI_SERVER per i3 workspace or a generic one
+#
+WORKSPACE_NAME=`i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name'`
+WORKSPACE_NAME=${WORKSPACE_NAME:-'generic'} export WORKSPACE_NAME
+eset $WORKSPACE_NAME
