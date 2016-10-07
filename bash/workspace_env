@@ -1,0 +1,20 @@
+# check for i3 running
+pgrep 'i3$' > /dev/null
+I3_RUNNING=$?
+
+# check for jq is installed
+which jq > /dev/null
+JQ_INSTALLED=$?
+
+if [ "$I3_RUNNING" -eq 0 ] && [ "$JQ_INSTALLED" -eq 0 ]; then
+	WORKSPACE_NAME=`i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name'`
+else
+	if [ $JQ_INSTALLED -ne 0 ]; then
+		echo "For better experience install jq"
+	fi
+fi
+
+#
+# set i3 workspace name or a generic one
+#
+WORKSPACE_NAME=${WORKSPACE_NAME:-'generic'} export WORKSPACE_NAME

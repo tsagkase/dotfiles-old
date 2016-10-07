@@ -1,0 +1,27 @@
+#
+# VIM related (tips from https://www.rohanjain.in/yet-another-vim-productivity-post-server-client/)
+#
+# Set the name of vim session the terminal is tied up to
+function eset {
+    export VI_SERVER=$1
+}
+
+#
+# Fire up a new server according workspace name or
+# according to the argument supplied
+#
+function vs {
+    NAME=${WORKSPACE_NAME:-$1}
+    eset $NAME
+    vim --servername $VI_SERVER
+}
+
+# Open up the files in the environment Vim server.
+function es {
+    vim --servername $VI_SERVER --remote-silent $*
+}
+
+#
+# set VI_SERVER according to workspace name or to a generic one
+#
+eset ${WORKSPACE_NAME:-'generic'}

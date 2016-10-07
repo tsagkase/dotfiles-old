@@ -130,12 +130,16 @@ alias slack=/usr/bin/scudcloud
 export NVM_DIR="/home/vaggelis/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
+if [ -f ~/.bash/bash_functions ]; then
+    . ~/.bash/bash_functions
 fi
-#
-# set VI_SERVER per i3 workspace or a generic one
-#
-WORKSPACE_NAME=`i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name'`
-WORKSPACE_NAME=${WORKSPACE_NAME:-'generic'} export WORKSPACE_NAME
-eset $WORKSPACE_NAME
+
+# setup workspace specific environment
+if [ -f ~/.bash/workspace_env ]; then
+	. ~/.bash/workspace_env
+fi
+
+# setup vim environment and functions
+if [ -f ~/.bash/vim_functions ]; then
+	. ~/.bash/vim_functions
+fi
