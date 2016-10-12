@@ -6,7 +6,7 @@ I3_RUNNING=$?
 which jq > /dev/null
 JQ_INSTALLED=$?
 
-if [ "$I3_RUNNING" -eq 0 ] && [ "$JQ_INSTALLED" -eq 0 ]; then
+if [ "$I3_RUNNING" -eq 0 ] && [ "$JQ_INSTALLED" -eq 0 ] && [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ]; then
 	WORKSPACE_NAME=`i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name'`
 else
 	if [ $JQ_INSTALLED -ne 0 ]; then
