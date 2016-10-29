@@ -76,3 +76,6 @@ command! -bar -nargs=* Sedit call ScratchEdit('edit', <q-args>)
 command! -bar -nargs=* Ssplit call ScratchEdit('split', <q-args>)
 command! -bar -nargs=* Svsplit call ScratchEdit('vsplit', <q-args>)
 command! -bar -nargs=* Stabedit call ScratchEdit('tabe', <q-args>)
+
+" find files recursively under vim's CWD
+set path+=**
