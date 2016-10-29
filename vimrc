@@ -79,3 +79,8 @@ command! -bar -nargs=* Stabedit call ScratchEdit('tabe', <q-args>)
 
 " find files recursively under vim's CWD
 set path+=**
+
+" Today, Yesterday commands
+command! Today r!date +"\%Y/\%m/\%d"
+command! Yesterday r!date --date="yesterday" +"\%Y/\%m/\%d"
+command! Tomorrow r!date --date="tomorrow" +"\%Y/\%m/\%d"
