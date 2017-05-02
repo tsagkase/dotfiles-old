@@ -40,7 +40,16 @@ function docker-ip {
 	docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
 }
 
+#
+# pass the column (#) you'd like to find the mean and median
+#
 function mean-and-median-col {
 	sort -k $1 -n | awk -v N=$1 '{ sum += $N; count[NR] = $N } END { if (NR > 0)
 print "AVG: " sum / NR; if (NR % 2) { print "Median: " count[(NR+1)/2] } else { print "Median: " (count[NR/2]+count[(NR/2)+1]) / 2.0 } }'
+}
+
+#
+# check site in similarweb on chromium
+function similarweb {
+	chromium https://www.similarweb.com/website/$1
 }
