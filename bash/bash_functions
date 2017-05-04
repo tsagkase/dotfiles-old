@@ -50,6 +50,14 @@ print "AVG: " sum / NR; if (NR % 2) { print "Median: " count[(NR+1)/2] } else { 
 
 #
 # check site in similarweb on chromium
+#
 function similarweb {
 	chromium https://www.similarweb.com/website/$1
+}
+
+#
+# check site in wayback machine on chromium
+#
+function wayback {
+	chromium https://web-beta.archive.org/web/*/$1/
 }
