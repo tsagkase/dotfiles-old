@@ -41,6 +41,18 @@ function docker-ip {
 }
 
 #
+# days since a specific date
+# usage: datediff 2017-05-13 [to date]
+#   if `to_date' not supplied then today is assumed
+#
+function datediff() {
+    to_date=${2:-"today"}
+    d1=$(date -d "$to_date" +%s)
+    d2=$(date -d "$1" +%s)
+    echo $(( (d1 - d2) / 86400 )) days
+}
+
+#
 # pass the column (#) you'd like to find the mean and median
 #
 function mean-and-median-col {
