@@ -1,0 +1,8 @@
+[ui]
+history=true
+
+[logging]
+chlog=true
+
+[connection]
+autoping=180
