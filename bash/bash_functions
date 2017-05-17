@@ -73,3 +73,11 @@ function similarweb {
 function wayback {
 	chromium https://web-beta.archive.org/web/*/$1/
 }
+
+# 
+# fetch HTML page and extract using CSS selector
+# usage: parse-html div http://google.com
+#
+function parse-html {
+	curl $2 | hxselect -is '\n\n' $1
+}
