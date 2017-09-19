@@ -81,3 +81,12 @@ function wayback {
 function parse-html {
 	curl $2 | hxselect -is '\n\n' $1
 }
+
+#
+# returns the parent process identifier of some process id
+# usage: parent_id_of 1340
+#
+function parent_id_of {
+	ps -o ppid= $1
+}
+
