@@ -1,0 +1,12 @@
+#!/bin/sh
+# wless - web page less
+# found in: http://chneukirchen.org/dotfiles/bin/wless
+# TODO:
+#  - FIX: fetched page file name to reflect file type so that lesspipe can do its job, e.g. 
+#         wless https://papers.mathyvanhoef.com/ccs2017.pdf
+#         will not treat file as PDF and view it properly (i.e. use pdftotext)
+export LESSOPEN='|/usr/bin/lesspipe %s'
+TEMPFILE=$(mktemp)
+trap "rm -f $TEMPFILE" INT TERM EXIT
+curl -L "$@" -o $TEMPFILE
+less $TEMPFILE
