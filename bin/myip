@@ -1,0 +1,8 @@
+#!/bin/sh
+# myip - get current IP via whoami.akamai.net
+#
+# found on http://chneukirchen.org/dotfiles/bin/myip
+
+dig -4 +short whoami.akamai.net @ns1-1.akamaitech.net a
+dig -6 +short whoami.akamai.net @2600:1480:1::c1 aaaa
+
