@@ -34,6 +34,9 @@ set path+=**
 
 filetype plugin on
 
+" ensure that :make runs after the buffers are flashed
+set autowrite
+
 " Today, Yesterday commands
 command! Today r!date +"\%Y/\%m/\%d"
 command! Yesterday r!date --date="yesterday" +"\%Y/\%m/\%d"
