@@ -90,3 +90,9 @@ function parent_id_of {
 	ps -o ppid= $1
 }
 
+#
+# Removed weird apostrophes and such from document
+#
+function unwordify {
+	sed -e "s/’/'/g; s/“/\"/g; s/”/\"/g; s/‘/\'/g; s/–/-/g; s/—/-/g" $@
+}
